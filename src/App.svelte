@@ -19,13 +19,11 @@
 	}
 
 	const changeCentury = century => { 
-		console.log(century.detail)
 		objects = [];
 		return fetchObjectsFromCentury(century.detail)
 			.then(data => {
 				let singleImageObjects =  data.records.filter(record => record.imagecount === 1);
 				objects = singleImageObjects.map(object => object.images[0].baseimageurl);
-				console.log(objects)
 				return objects
 			})
 	}
