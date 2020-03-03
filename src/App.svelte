@@ -1,16 +1,27 @@
 <script>
 	import Header from './Header.svelte';
 	import Century from './Century.svelte';
-	import { fetchAllCenturies } from '../apiCalls.js';
-	
+	import { fetchAllCenturies, fetchImagesFromCentury } from '../apiCalls.js';
+
 	let centuries = [];
+	let currentCentury;
+	let images = [];
 
 	const getCenturies = () => {
 		return fetchAllCenturies()
 			.then(data => {
-				centuries = data.records.filter(record => record.name !=='Unidentified century');
-				console.log(centuries)
+				centuries = data.records.filter(record => {
+					if (record.name !=='Unidentified century' && record.name !=='(not assigned)') {
+						return record
+					}
+				});
 			})
+	}
+
+	const changeCentury = century => { 
+		currentCentury = century;
+		return fetchImagesFromCentury(currentyCentury)
+			.then(data => console.log(data)) 
 	}
 </script>
 
@@ -21,8 +32,15 @@
 	{:else}
 		<h3>Choose a Century</h3>
 		{#each centuries as century}
-			<Century name={century.name}/>
+			<Century 
+			name={century.name}
+			on:changecentury={changeCentury}/>
 		{/each}
+	{/if}
+	{#if !currentCentury}
+		<h3>Images shown here...</h3>
+		{:else}
+
 	{/if}
 </main>
 
