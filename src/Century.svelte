@@ -15,14 +15,16 @@
 
 <style>
   .century-btn {
-    background-color: rgb(53, 175, 220);
+    background-color: rgb(19, 145, 255);
     color: white;
     margin: 3px;
     border: none;
+    font-size: 1.3em;
+    font-family: 'Varela Round', sans-serif;
   }
 
   .century-btn:hover {
-    background-color: rgb(35, 146, 186);
+    background-color: rgb(13, 83, 235);
     cursor: pointer;
   }
 
