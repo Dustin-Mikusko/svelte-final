@@ -1,10 +1,29 @@
 <script>
-	export let name;
+	import Header from './Header.svelte';
+	import Century from './Century.svelte';
+	import { fetchAllCenturies } from '../apiCalls.js';
+	
+	let centuries = [];
+
+	const getCenturies = () => {
+		return fetchAllCenturies()
+			.then(data => {
+				centuries = data.records.filter(record => record.name !=='Unidentified century');
+				console.log(centuries)
+			})
+	}
 </script>
 
+<Header />
 <main>
-	<h1>Hello {name}!</h1>
-	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
+	{#if !centuries.length}
+		<button type="button" on:click={getCenturies}>Enter</button>
+	{:else}
+		<h3>Choose a Century</h3>
+		{#each centuries as century}
+			<Century name={century.name}/>
+		{/each}
+	{/if}
 </main>
 
 <style>
