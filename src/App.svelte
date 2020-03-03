@@ -1,6 +1,7 @@
 <script>
 	import Header from './Header.svelte';
 	import Century from './Century.svelte';
+	import Image from './Image.svelte';
 	import { fetchAllCenturies, fetchImagesFromCentury } from '../apiCalls.js';
 
 	let centuries = [];
@@ -20,8 +21,12 @@
 
 	const changeCentury = century => { 
 		currentCentury = century;
-		return fetchImagesFromCentury(currentyCentury)
-			.then(data => console.log(data)) 
+		return fetchImagesFromCentury(currentCentury)
+			.then(data => {
+				images =  data.records.map(record => record);
+				console.log(images);
+				return images
+			}) 
 	}
 </script>
 
@@ -36,11 +41,14 @@
 			name={century.name}
 			on:changecentury={changeCentury}/>
 		{/each}
+		<br><br>
 	{/if}
-	{#if !currentCentury}
+	{#if !images.length}
 		<h3>Images shown here...</h3>
 		{:else}
-
+			{#each images as image}
+				<Image url={image.baseimageurl}/>
+			{/each}
 	{/if}
 </main>
 
