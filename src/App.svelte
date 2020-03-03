@@ -6,6 +6,7 @@
 
 	let centuries = [];
 	let objects = [];
+	let currentCentury;
 
 	const getCenturies = () => {
 		return fetchAllCenturies()
@@ -19,6 +20,7 @@
 	}
 
 	const changeCentury = century => { 
+		currentCentury = century.detail;
 		objects = [];
 		return fetchObjectsFromCentury(century.detail)
 			.then(data => {
@@ -45,6 +47,7 @@
 	{#if !objects.length}
 		<h3>Images shown here...</h3>
 		{:else}
+			<h3>Artifacts from the {currentCentury}</h3>
 			{#each objects as object}
 				<Image url={object}/>
 			{/each}
