@@ -8,8 +8,8 @@ export const fetchAllCenturies = () => {
     })
 };
 
-export const fetchObjectsFromCentury = century => {
-  return fetch(`https://api.harvardartmuseums.org/object?century=${century}&size=20&apikey=7416b440-5c9c-11ea-9401-ed9c8b78a90d`)
+export const fetchImagesFromCentury = century => {
+  return fetch(`https://api.harvardartmuseums.org/image?century=${century}&size=30&apikey=7416b440-5c9c-11ea-9401-ed9c8b78a90d`)
     .then(res => {
       if (!res.ok) {
         throw Error('Error getting objects')
