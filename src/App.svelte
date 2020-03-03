@@ -1,11 +1,11 @@
 <script>
 	import Header from './Header.svelte';
 	import Century from './Century.svelte';
-	import { fetchAllCenturies, fetchImagesFromCentury } from '../apiCalls.js';
+	import Image from './Image.svelte';
+	import { fetchAllCenturies, fetchObjectsFromCentury } from '../apiCalls.js';
 
 	let centuries = [];
-	let currentCentury;
-	let images = [];
+	let objects = [];
 
 	const getCenturies = () => {
 		return fetchAllCenturies()
@@ -19,9 +19,13 @@
 	}
 
 	const changeCentury = century => { 
-		currentCentury = century;
-		return fetchImagesFromCentury(currentyCentury)
-			.then(data => console.log(data)) 
+		objects = [];
+		return fetchObjectsFromCentury(century.detail)
+			.then(data => {
+				let singleImageObjects =  data.records.filter(record => record.imagecount === 1);
+				objects = singleImageObjects.map(object => object.images[0].baseimageurl);
+				return objects
+			})
 	}
 </script>
 
@@ -36,11 +40,14 @@
 			name={century.name}
 			on:changecentury={changeCentury}/>
 		{/each}
+		<br><br>
 	{/if}
-	{#if !currentCentury}
+	{#if !objects.length}
 		<h3>Images shown here...</h3>
 		{:else}
-
+			{#each objects as object}
+				<Image url={object}/>
+			{/each}
 	{/if}
 </main>
 
