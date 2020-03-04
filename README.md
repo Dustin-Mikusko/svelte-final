@@ -1,4 +1,4 @@
-### Whoever Svelte It - Harvard Art Museum Edition
+# Whoever Svelte It - Harvard Art Museum Edition
 
 ## Overview
 
