@@ -1,50 +1,25 @@
-*Looking for a shareable component template? Go here --> [sveltejs/component-template](https://github.com/sveltejs/component-template)*
+### Whoever Svelte It - Harvard Art Museum Edition
 
----
+## Overview
 
-# svelte app
-
-This is a project template for [Svelte](https://svelte.dev) apps. It lives at https://github.com/sveltejs/template.
-
-To create a new project based on this template using [degit](https://github.com/Rich-Harris/degit):
-
-```bash
-npx degit sveltejs/template svelte-app
-cd svelte-app
-```
-
-*Note that you will need to have [Node.js](https://nodejs.org) installed.*
+Want to visit the Harvard Art Museum, but don't have time? Well this app has you somewhat covered! Whoever Svelte It is a simple app that consumes the [Harvard Art Museum API](https://github.com/harvardartmuseums/api-docs) and displays various articfacts from several centuries. This project was treated as an interview take home challenge, so I allotted myself roughly 48 hours to complete it. 
 
 
 ## Get started
 
-Install the dependencies...
+Clone down this repo, then run:
 
-```bash
-cd svelte-app
+```
 npm install
 ```
 
-...then start [Rollup](https://rollupjs.org):
+To see the app in action, run:
 
-```bash
+```
 npm run dev
 ```
 
-Navigate to [localhost:5000](http://localhost:5000). You should see your app running. Edit a component file in `src`, save it, and reload the page to see your changes.
-
-By default, the server will only respond to requests from localhost. To allow connections from other computers, edit the `sirv` commands in package.json to include the option `--host 0.0.0.0`.
-
-
-## Building and running in production mode
-
-To create an optimised version of the app:
-
-```bash
-npm run build
-```
-
-You can run the newly built app with `npm run start`. This uses [sirv](https://github.com/lukeed/sirv), which is included in your package.json's `dependencies` so that the app will work when you deploy to platforms like [Heroku](https://heroku.com).
+Navigate to [localhost:5000](http://localhost:5000). You should see the app running.
 
 
 ## Single-page app mode
@@ -75,19 +50,4 @@ cd public
 now deploy --name my-project
 ```
 
-As an alternative, use the [Now desktop client](https://zeit.co/download) and simply drag the unzipped project folder to the taskbar icon.
-
-### With [surge](https://surge.sh/)
-
-Install `surge` if you haven't already:
-
-```bash
-npm install -g surge
-```
-
-Then, from within your project folder:
-
-```bash
-npm run build
-surge public my-project.surge.sh
-```
+As an alternative, use the [Now desktop client](https://zeit.co/download) and simply drag the unzipped project folder to the 
