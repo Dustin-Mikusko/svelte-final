@@ -34,7 +34,8 @@
 <Header />
 <main>
 	{#if !centuries.length}
-		<button type="button" on:click={getCenturies}>Enter</button>
+		<h3>Enter our virtual studio to see rare artifacts from a variety of different centuries!</h3>
+		<button type="button" class="enter-btn" on:click={getCenturies}>Enter</button>
 	{:else}
 		<h3>Choose a Century</h3>
 		{#each centuries as century}
@@ -60,13 +61,25 @@
 		padding: 1em;
 		max-width: 240px;
 		margin: 0 auto;
+		
 	}
 
-	h1 {
-		color: #ff3e00;
-		text-transform: uppercase;
-		font-size: 4em;
-		font-weight: 100;
+	.enter-btn {
+		background-color: rgb(19, 145, 255);
+		width: 20%;
+		font-size: 2em;
+		font-family: 'Varela Round', sans-serif;
+		border: none;
+		color: white;
+	}
+
+	.enter-btn:hover {
+		background-color: rgb(16, 115, 201);
+		cursor: pointer;
+	}
+
+	.enter-btn:active {
+		transform: scale(.97);
 	}
 
 	@media (min-width: 640px) {
